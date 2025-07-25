@@ -68,5 +68,7 @@ public class EnquirySteps {
         Assert.assertTrue("Form was not submitted successfully!", enquiryPage.isSuccessMessageVisible());
         System.out.println("Success Message: " + enquiryPage.getSuccessMessageText());
     }
+    
+    
 
 }

@@ -1,10 +1,10 @@
 Feature: Email Field Validation on Enquiry Page
-
+  
   As a user filling out the Enquiry form,
   I want the email field to accept only valid email formats,
   So that I can ensure proper communication and prevent form submission with invalid emails.
 
-  Background:
+  Background: 
     Given the application URL is accessible
     And I navigate to the Enquiry page
 
@@ -21,3 +21,5 @@ Feature: Email Field Validation on Enquiry Page
     And I click the "SEND" button
     Then an appropriate error message should be displayed with proper styling
     And the form submission should be prevented
+
+  
