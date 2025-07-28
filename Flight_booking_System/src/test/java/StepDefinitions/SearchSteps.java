@@ -18,7 +18,7 @@ public class SearchSteps {
 
     SearchPage searchPage = new SearchPage(BaseClass.getDriver());
 
-    @Given("the application URL is accessible")
+    @Given("the application URL is accessible and search")
     public void application_url_is_accessible() {
     	// Already navigated in Hooks.java
     	System.out.println("Application launched at: " + BaseClass.getDriver().getCurrentUrl());

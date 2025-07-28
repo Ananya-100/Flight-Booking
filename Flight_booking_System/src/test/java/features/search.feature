@@ -5,7 +5,7 @@ Feature: Flight Search Functionality
   So that I can view the correct airline details.
 
   Background:
-    Given the application URL is accessible
+    Given the application URL is accessible and search
     And I navigate to the Flight Search page
 
   Scenario: TC-UI-SEARCH-001 - Valid Flight Number
