@@ -22,8 +22,8 @@ Feature: Flight Search Functionality
 
   Scenario: TC-UI-SEARCH-004 - Invalid Flight Name
     When I search by flight name "AirIndia"
-    Then no flight name fields should be visible
-
+    Then the system should display "Data not found" message
+    
   Scenario: TC-UI-SEARCH-005 - Valid Flight Type
     When I search by flight type "Direct Flight"
     Then the system should display flight type result "Direct Flight"
