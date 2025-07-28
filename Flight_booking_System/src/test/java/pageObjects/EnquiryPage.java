@@ -31,7 +31,8 @@ public class EnquiryPage {
     private By sendButton = By.id("submit");
     private By errorMessage = By.id("emailError"); 
     private By successMsg = By.id("success-msg");
-    
+    private By errorMsgName = By.id("nameError");
+    private By errorMsgPhone = By.id("phoneError");
 
     // Methods
     public void enterEmail(String email) {
@@ -39,15 +40,51 @@ public class EnquiryPage {
         driver.findElement(emailField).sendKeys(email);
     }
 
-    public void fillRequiredFields() {
-        driver.findElement(nameField).sendKeys("Test User");
-        driver.findElement(phoneField).sendKeys("1234567890");
-        driver.findElement(subjectField).sendKeys("Demo subject");
-        driver.findElement(messageField).sendKeys("This is a test message.");
+    public void enterName(String name) {
+    	driver.findElement(nameField).clear();
+    	driver.findElement(nameField).sendKeys(name);
+    }
+    public void enterPhone(String phone) {
+    	driver.findElement(phoneField).clear();
+    	driver.findElement(phoneField).sendKeys(phone);
+    }
+    public void enterSubject(String sub) {
+    	driver.findElement(subjectField).clear();
+    	driver.findElement(subjectField).sendKeys(sub);
+    }
+   
+    
+    public void enterMsg(String msg) {
+    	driver.findElement(messageField).clear();
+    	driver.findElement(messageField).sendKeys(msg);
+    }
+ 
+    public boolean getErrMsgName() {
+        boolean exists = driver.findElements(errorMsgName).size() > 0;
+        boolean visible = exists && driver.findElement(errorMsgName).isDisplayed();  // ✅ use correct locator
+        System.out.println("Name error element exists: " + exists + ", visible: " + visible);
+        return visible;
     }
 
-    public void clickSend(){
-    	
+    
+    
+    public boolean getErrMsgPhone() {
+        boolean exists = driver.findElements(errorMsgPhone).size() > 0;
+        boolean visible = exists && driver.findElement(errorMsgPhone).isDisplayed();
+        System.out.println("Phone error element exists: " + exists + ", visible: " + visible);
+        return visible;
+    }
+    
+//    public void fillRequiredFields() {
+//        driver.findElement(nameField).sendKeys("Test User");
+//        driver.findElement(phoneField).sendKeys("1234567890");
+//        driver.findElement(subjectField).sendKeys("Demo subject");
+//        driver.findElement(messageField).sendKeys("This is a test message.");
+//    
+
+
+    public void clickSend() throws InterruptedException{
+    	Thread.sleep(3000);
         driver.findElement(sendButton).click();
     }
 
@@ -59,7 +96,7 @@ public class EnquiryPage {
     }
     
     public boolean isSuccessMessageVisible() throws TimeoutException {
-        WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofMillis(5));
+        WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofMillis(50));
 		WebElement success = wait.until(ExpectedConditions.visibilityOfElementLocated(successMsg));
 		return success.isDisplayed();
     }

@@ -38,6 +38,19 @@ public class Hooks {
        
     }
     
+    
+    @AfterStep
+    public void addScreenshot(Scenario scenario) {
+        if (scenario.isFailed()) {
+            try {
+                TakesScreenshot ts = (TakesScreenshot) driver;
+                byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+                scenario.attach(screenshot, "image/png", "Failed Step Screenshot");
+            } catch (Exception e) {
+                System.err.println("Screenshot capture failed: " + e.getMessage());
+            }
+        }
+    }
 
 
  
