@@ -71,8 +71,8 @@ public class SearchPage {
         return resultTable.getText().contains(type);
     }
     
-    public boolean areNoFlightNameResultsVisible() {
+    public boolean isNoDataMessageVisible() {
         wait.until(ExpectedConditions.visibilityOf(resultTable));
-        return visibleFlightRows.stream().noneMatch(WebElement::isDisplayed);
+        return resultTable.getText().contains("Data not found");
     }
 }
