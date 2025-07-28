@@ -1,6 +1,7 @@
 package pageObjects;
 
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -50,10 +51,10 @@ public class BookingPage {
     @FindBy(id = "book-now")
     public WebElement bookButton;
 
-    @FindBy(className = "error-msg")
+    @FindBy(id = "error-msg")
     public List<WebElement> errorMessages;
 
-    @FindBy(className = "bookingconfirm")
+    @FindBy(id = "bookingconfirm")
     public WebElement successMessage;
 
     public void fillBookingForm(String from, String to, String date, String cls, String name, String mail, String phone, int count) {
@@ -72,8 +73,12 @@ public class BookingPage {
     }
 
     public void clickBookButton() {
-        bookButton.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", bookButton);
+        js.executeScript("arguments[0].click();", bookButton);
     }
+
+
 
     public boolean isSuccessDisplayed() {
         return successMessage.isDisplayed();

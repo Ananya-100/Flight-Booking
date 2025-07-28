@@ -1,7 +1,9 @@
 Feature: Flight Ticket Booking Field Validations
 
   Background:
-    Given User is logged in and navigates to the Flight Ticket Booking page
+    Given the application is accessible
+    And I navigate to the Booking page
+
 
   @Positive
   Scenario: TC-UI-TICKET-001 - Valid Travel From/To
@@ -36,7 +38,7 @@ Feature: Flight Ticket Booking Field Validations
     When User enters "8888888" as Departure Date
     And fills all other fields with valid data
     And User clicks on Book Ticket
-    Then Error message for "Invalid/Past Date" should be displayed
+    Then Error message "Invalid/Past Date" should be displayed
 
   @Positive
   Scenario: TC-UI-TICKET-005 - Valid Email
