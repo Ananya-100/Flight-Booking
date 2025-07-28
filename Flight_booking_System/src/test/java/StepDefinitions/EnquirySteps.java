@@ -112,7 +112,7 @@ public class EnquirySteps {
         enquiryPage.enterPhone(phone);
     }
 
-    @Then("the form should not be submitted")
+    @Then("the form should not be submitted and error message should display")
     public void form_should_not_be_submitted() {
         boolean isSuccessVisible;
         try {
@@ -121,12 +121,13 @@ public class EnquirySteps {
             isSuccessVisible = false;
         }
         Assert.assertFalse("Form was submitted even with invalid phone!", isSuccessVisible);
-    }
-
-    @Then("an error message should be displayed for the Phone Number field")
-    public void error_message_should_be_displayed_for_phone() {
         Assert.assertTrue("Error message not displayed for phone field!", enquiryPage.getErrMsgPhone());
     }
+
+//    @Then("an error message should be displayed for the Phone Number field")
+//    public void error_message_should_be_displayed_for_phone() {
+//        Assert.assertTrue("Error message not displayed for phone field!", enquiryPage.getErrMsgPhone());
+//    }
 
 
 }

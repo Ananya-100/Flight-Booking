@@ -75,8 +75,8 @@ Feature: Email Field Validation on Enquiry Page
 		And I fill subject field with valid data like "This is test message"
     And I fill message field with valid data like "I am not satisfy with service"
     And I click the "SEND" button
-    Then the form should not be submitted
-    And an error message should be displayed for the Phone Number field
+    Then the form should not be submitted and error message should display
+    
 
     Examples:
       | phone     |
