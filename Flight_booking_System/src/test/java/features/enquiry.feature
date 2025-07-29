@@ -28,6 +28,16 @@ Feature: Email Field Validation on Enquiry Page
     Then an appropriate error message should be displayed with proper styling
     And the form submission should be prevented
 	
+	Scenario: TC-UI-ENQUIRY-003 - Valid Messages Field
+		And I fill name field with valid data like "ananya"  
+		And I fill email field with valid data like "tugmail@gmail.com"
+    And I fill phone field with valid data like "1234567890"
+    And I fill subject field with valid data like "This is test message"
+    And I fill message field with valid data like "I am not satisfy with service"
+    And I click the "SEND" button
+    Then no error message should be displayed
+    And the form should be submitted successfully
+	
 	Scenario: TC-UI-ENQUIRY-005 - Valid Name Field
 		And I fill name field with valid data like "ananya"  
 		And I fill email field with valid data like "tugmail@gmail.com"
