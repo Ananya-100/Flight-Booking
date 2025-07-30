@@ -1,19 +1,16 @@
 package StepDefinitions;
 
 import Factory.BaseClass;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
-import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.JavascriptExecutor;
 import pageObjects.BookingPage;
 
 import static org.junit.Assert.*;
 
 public class BookingSteps {
 
-    WebDriver driver;
     BookingPage page;
-
 
     @Given("the application is accessible")
     public void application_url_is_accessible() {
@@ -22,10 +19,15 @@ public class BookingSteps {
     }
 
     @And("I navigate to the Booking page")
-    public void i_navigate_to_enquiry_page() {
+    public void i_navigate_to_booking_page() {
         BaseClass.getDriver().get("https://webapps.tekstac.com/FlightBooking/index.html");
         page = new BookingPage(BaseClass.getDriver());
+
+        JavascriptExecutor js = (JavascriptExecutor) BaseClass.getDriver();
+        js.executeScript("window.scrollTo(0, 0);");
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
+
 
     @When("User enters {string} in Travel From field")
     public void enterTravelFrom(String from) {
@@ -113,10 +115,4 @@ public class BookingSteps {
         assertTrue("Duplicate booking warning not shown", error.contains("duplicate") || error.contains("already booked"));
     }
 
-    @After
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
 }
