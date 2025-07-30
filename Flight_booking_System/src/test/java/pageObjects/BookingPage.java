@@ -74,8 +74,7 @@ public class BookingPage {
 
     public void clickBookButton() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", bookButton);
-        js.executeScript("arguments[0].click();", bookButton);
+        js.executeScript("handleButton('book-now');");
     }
 
 
