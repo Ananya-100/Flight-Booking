@@ -9,7 +9,7 @@ Some features passed as expected, while others failed due to existing bugs in th
 
 ## Team
 
-Shubhangee Agarwal(Product owner) : search module
+Shubhangee Agrawal(Product owner) : Search module
 
 Ananya Sadhukhan: Enquiry Module 
 
